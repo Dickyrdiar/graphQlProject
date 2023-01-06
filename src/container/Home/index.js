@@ -36,7 +36,12 @@ const HomeIndex = () => {
   return (
     <>
       <Main>
-        <Box width={"75%"} display={"flex"} justifyContent={"space-between"}>
+        <Box
+          width={"100%"}
+          backgroundColor={"GrayText"}
+          display={"flex"}
+          justifyContent={"space-around"}
+        >
           <Box>
             {controller.responseDate?.product &&
               controller.responseDate?.product?.map((val) => {
@@ -69,29 +74,18 @@ const HomeIndex = () => {
 
           <Divider orientation="horizontal" color={"#d9d9d9"} />
 
-          <Box padding={"40px"}>
+          <Box width={"auto"}>
             <Container>
-              <Stack
-                as={Box}
-                textAlign={"center"}
-                spacing={{ base: 8, md: 14 }}
-                // py={{ base: 20, md: 36 }}
-              >
-                <Box display={"flex"} justifyContent={"space-between"}>
-                  <Link>
-                    <Box color={"#2b2f3c"} padding={"2px"}>
-                      Lates Story
-                    </Box>
-                    <Box>
-                      <Icon
-                        icon="material-symbols:arrow-right-alt"
-                        color="#d9d9d9"
-                        width={"30px"}
-                        height={"30px"}
-                      />
-                    </Box>
-                  </Link>
+              <Stack spacing={6} direction={"row"} padding={"40px"}>
+                <Box fontSize={"12px"} width={"2em"}>
+                  Lets Start
                 </Box>
+                <Icon
+                  icon="material-symbols:arrow-right-alt"
+                  color="#d9d9d9"
+                  width={"35px"}
+                  height={"35px"}
+                />
               </Stack>
             </Container>
           </Box>
