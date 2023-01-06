@@ -26,9 +26,20 @@ function ControllerHome() {
     setOpenDetail(true);
   };
 
+  const handleOnClose = () => {
+    setOpenDetail(false);
+  };
+
   console.log(loading);
 
-  return { responseDate, errorData, loading, handleClick, openDetail };
+  return {
+    responseDate,
+    errorData,
+    loading,
+    handleClick,
+    openDetail,
+    handleOnClose,
+  };
 }
 
 export default ControllerHome;

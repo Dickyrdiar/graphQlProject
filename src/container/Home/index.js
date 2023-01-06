@@ -1,18 +1,37 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { Box, Container, Divider, Flex, Stack, Center } from "@chakra-ui/react";
+import {
+  Box,
+  Container,
+  Divider,
+  Flex,
+  Stack,
+  Center,
+  CircularProgress,
+} from "@chakra-ui/react";
 import styled from "styled-components";
 import ProductCard from "../../components/ProductList/card";
 import DetailModal from "../../components/ModalDetail";
 import ControllerHome from "../../controller/home.controller";
+import { Icon } from "@iconify/react";
+import { Link } from "react-router-dom";
 
 const HomeIndex = () => {
   const controller = ControllerHome();
 
-  console.log(
-    "response",
-    controller.responseDate?.product?.map((val) => val.name)
-  );
+  if (controller.loading) {
+    return (
+      <Box
+        alignItems={"center"}
+        style={{
+          padding: "23em",
+          marginTop: "-9em",
+        }}
+      >
+        <CircularProgress value={30} isIndeterminate color="#d9d9d9" />
+      </Box>
+    );
+  }
 
   return (
     <>
@@ -30,21 +49,52 @@ const HomeIndex = () => {
                         desc={val.desc}
                         image={val.image}
                         // onClick={handleClick}
-                        // onClick={controller.handleClick}
+                        onClick={controller.handleClick}
                         // vote={val.vote}
                         // commentCount={val.comment}
                       />
                     </Container>
+                    <DetailModal
+                      isOpen={controller.openDetail}
+                      onClose={controller.handleOnClose}
+                      name={val.name}
+                    />
                   </>
                 );
               })}
           </Box>
-          <DetailModal isOpen={controller.openDetail} />
           <Center>
             <Divider orientation="vertical" color={"#d9d9d9"} />
           </Center>
 
-          <Box padding={"40px"}>Blog</Box>
+          <Divider orientation="horizontal" color={"#d9d9d9"} />
+
+          <Box padding={"40px"}>
+            <Container>
+              <Stack
+                as={Box}
+                textAlign={"center"}
+                spacing={{ base: 8, md: 14 }}
+                // py={{ base: 20, md: 36 }}
+              >
+                <Box display={"flex"} justifyContent={"space-between"}>
+                  <Link>
+                    <Box color={"#2b2f3c"} padding={"2px"}>
+                      Lates Story
+                    </Box>
+                    <Box>
+                      <Icon
+                        icon="material-symbols:arrow-right-alt"
+                        color="#d9d9d9"
+                        width={"30px"}
+                        height={"30px"}
+                      />
+                    </Box>
+                  </Link>
+                </Box>
+              </Stack>
+            </Container>
+          </Box>
         </Box>
       </Main>
     </>
@@ -66,34 +116,3 @@ const Main = styled.div`
     transition: 0.4s height ease;
   }
 `;
-
-const dataProduct = [
-  {
-    id: 1,
-    title: "Github",
-    desc: "save project to cloud",
-    vote: 100,
-    // comment: "12",
-  },
-
-  {
-    id: 2,
-    title: "Figma",
-    desc: "create protottype",
-    vote: "70",
-  },
-
-  {
-    id: 3,
-    title: "Hasura",
-    desc: "create database with graphql",
-    vote: 60,
-  },
-
-  {
-    id: 4,
-    title: "VsCode",
-    desc: "Code editor",
-    vote: 99,
-  },
-];

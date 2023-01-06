@@ -7,6 +7,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import { ApolloProvider } from "@apollo/client";
 import client from "./lib";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,7 +16,9 @@ root.render(
     <ChakraProvider>
       <BrowserRouter>
         <ApolloProvider client={client}>
-          <App />
+          <Provider store={store}>
+            <App />
+          </Provider>
         </ApolloProvider>
       </BrowserRouter>
     </ChakraProvider>

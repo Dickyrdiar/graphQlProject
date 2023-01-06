@@ -8,13 +8,22 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Container,
 } from "@chakra-ui/react";
 
-const DetailModal = ({ isOpen, onClose }) => {
+const DetailModal = ({ isOpen, onClose, name }) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      this is modal
-    </Modal>
+    <Container maxW={"7xl"}>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Detail Project</ModalHeader>
+          <ModalCloseButton />
+
+          <ModalBody>{name}</ModalBody>
+        </ModalContent>
+      </Modal>
+    </Container>
   );
 };
 

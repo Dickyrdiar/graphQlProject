@@ -9,9 +9,18 @@ export const GET_PROJECT = gql`
       name
       timeStamp
       product_id
-      vote
     }
   }
 `;
 
-export const ADD_PROJECT = gql``;
+export const ADD_PROJECT = gql`
+  mutation ($name: String!, $desc: String!, $icon: String!) {
+    insert_project(objects: { name: $name, desc: $desc, icon: $icon }) {
+      returning {
+        name
+        desc
+        icon
+      }
+    }
+  }
+`;
