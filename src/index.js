@@ -15,11 +15,11 @@ root.render(
   <React.StrictMode>
     <ChakraProvider>
       <BrowserRouter>
-        <ApolloProvider client={client}>
-          <Provider store={store}>
+        <Provider store={store}>
+          <ApolloProvider client={client}>
             <App />
-          </Provider>
-        </ApolloProvider>
+          </ApolloProvider>
+        </Provider>
       </BrowserRouter>
     </ChakraProvider>
   </React.StrictMode>
