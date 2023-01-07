@@ -8,6 +8,8 @@ import {
   Stack,
   Center,
   CircularProgress,
+  LinkBox,
+  LinkOverlay,
 } from "@chakra-ui/react";
 import styled from "styled-components";
 import ProductCard from "../../components/ProductList/card";
@@ -37,10 +39,10 @@ const HomeIndex = () => {
     <>
       <Main>
         <Box
-          width={"100%"}
-          backgroundColor={"GrayText"}
+          width={"80%"}
+          // backgroundColor={"GrayText"}
           display={"flex"}
-          justifyContent={"space-around"}
+          // justifyContent={"space-around"}
         >
           <Box>
             {controller.responseDate?.product &&
@@ -72,19 +74,25 @@ const HomeIndex = () => {
             <Divider orientation="vertical" color={"#d9d9d9"} />
           </Center>
 
-          <Divider orientation="horizontal" color={"#d9d9d9"} />
-
-          <Box width={"auto"}>
-            <Container>
-              <Stack spacing={6} direction={"row"} padding={"40px"}>
-                <Box fontSize={"12px"} width={"2em"}>
-                  Lets Start
+          <Box width={"100%"}>
+            <Container maxW={"5xl"}>
+              <Divider orientation="horizontal" color={"#d9d9d9"} />
+              <Stack spacing={4} direction={"row"} padding={"40px"}>
+                <Box
+                  style={{
+                    fontSize: "14px",
+                    color: "gray",
+                  }}
+                  maxW={"40"}
+                  backgroundColor={"AppWorkspace"}
+                >
+                  <Link>Lates Story</Link>
                 </Box>
                 <Icon
                   icon="material-symbols:arrow-right-alt"
                   color="#d9d9d9"
-                  width={"35px"}
-                  height={"35px"}
+                  width={"30px"}
+                  height={"30px"}
                 />
               </Stack>
             </Container>
@@ -98,7 +106,7 @@ const HomeIndex = () => {
 export default HomeIndex;
 
 const Main = styled.div`
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   padding: 0 20px 30px 20px;
   > div.content {
