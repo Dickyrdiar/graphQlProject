@@ -11,32 +11,87 @@ import {
   Stack,
   InputGroup,
   Input,
+  Menu,
+  MenuButton,
+  Avatar,
+  MenuList,
+  MenuDivider,
 } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
+import HeaderController from "../../controller/header.controller";
 
-const Navbar = (props) => {
+const Navbar = ({ props, isLogin }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
+  const controller = HeaderController();
+
+  console.log("valuesearch", controller.valueSearch);
 
   return (
     <NavBarContainer {...props}>
       <MenuToggle toggle={toggle} isOpen={isOpen} />
-      <MenuLinks isOpen={isOpen} />
+      <MenuLinks
+        isOpen={isOpen}
+        valueSeach={controller.valueSearch}
+        handleValueSearch={controller.handleValueSearch}
+      />
 
       {/* <Box justify={['flex-end']} backgroundColor={'gray.600'}>Sign In</Box> */}
       <Box display={"flex"} justifyContent={"space-between"} width={"150px"}>
-        <Box justify={["flex-end"]} alignItems="end">
-          <MenuItem to="/signup" isLast>
-            <Link>Sign In</Link>
-          </MenuItem>
-        </Box>
-        <Box>
-          <MenuItem>
-            <Button size="sm" rounded="md" bg={["#F85964"]} color={["#FFFF"]}>
-              Sign up
-            </Button>
-          </MenuItem>
-        </Box>
+        {isLogin ? (
+          <>
+            <Flex alignItems={"center"}>
+              <Menu>
+                <MenuButton
+                  as={Button}
+                  rounded={"full"}
+                  variant={"link"}
+                  cursor={"pointer"}
+                  minW={0}
+                >
+                  <Avatar
+                    size={"md"}
+                    src={
+                      "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+                    }
+                  />
+                </MenuButton>
+                <MenuList>
+                  {/* <MenuItem>Link 1</MenuItem>
+                  <MenuItem>Link 2</MenuItem> */}
+                  {menuUser &&
+                    menuUser.map((val) => {
+                      return (
+                        <MenuItem to={val.url} key={val.id}>
+                          {val.name}
+                        </MenuItem>
+                      );
+                    })}
+                </MenuList>
+              </Menu>
+            </Flex>
+          </>
+        ) : (
+          <>
+            <Box justify={["flex-end"]} alignItems="end">
+              <MenuItem to="/signup" isLast>
+                <Link>Sign In</Link>
+              </MenuItem>
+            </Box>
+            <Box>
+              <MenuItem>
+                <Button
+                  size="sm"
+                  rounded="md"
+                  bg={["#F85964"]}
+                  color={["#FFFF"]}
+                >
+                  Sign up
+                </Button>
+              </MenuItem>
+            </Box>
+          </>
+        )}
       </Box>
     </NavBarContainer>
   );
@@ -82,7 +137,7 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
   );
 };
 
-const MenuLinks = ({ isOpen }) => {
+const MenuLinks = ({ isOpen, valueSeach, handleValueSearch }) => {
   return (
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
@@ -106,7 +161,13 @@ const MenuLinks = ({ isOpen }) => {
             {/* <InputLeftElement pointerEvents={'none'}
               children={<PhoneIcon color='gray.300' />}
             /> */}
-            <Input type={"text"} placeholder={"search"} color={"gray.800"} />
+            <Input
+              value={valueSeach}
+              onChange={handleValueSearch}
+              type={"text"}
+              placeholder={"search"}
+              color={"gray.800"}
+            />
           </InputGroup>
         </Stack>
         {dataMenu &&
@@ -164,5 +225,31 @@ const dataMenu = [
     id: 4,
     name: "About",
     link: "/about",
+  },
+];
+
+const menuUser = [
+  {
+    id: 1,
+    name: "Profile",
+    url: "/profile",
+  },
+
+  {
+    id: 2,
+    name: "My Project",
+    url: "/myproject",
+  },
+
+  {
+    id: 3,
+    name: "Settings",
+    url: "/setting",
+  },
+
+  {
+    id: 4,
+    name: "Logout",
+    url: "/logout",
   },
 ];

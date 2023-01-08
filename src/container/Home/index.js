@@ -17,6 +17,8 @@ import DetailModal from "../../components/ModalDetail";
 import ControllerHome from "../../controller/home.controller";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
+// import Header from "./components/Header";
+import Header from "../../components/Header";
 
 const HomeIndex = () => {
   const controller = ControllerHome();
@@ -37,6 +39,7 @@ const HomeIndex = () => {
 
   return (
     <>
+      <Header isLogin />
       <Main>
         <Box
           width={"80%"}
@@ -76,7 +79,7 @@ const HomeIndex = () => {
 
           <Box width={"100%"}>
             <Container maxW={"5xl"}>
-              <Divider orientation="horizontal" color={"#d9d9d9"} />
+              <Divider orientation="horizontal" color={"#2b2f3c"} />
               <Stack spacing={4} direction={"row"} padding={"40px"}>
                 <Box
                   style={{
@@ -84,7 +87,8 @@ const HomeIndex = () => {
                     color: "gray",
                   }}
                   maxW={"40"}
-                  backgroundColor={"AppWorkspace"}
+                  color={"gray.800"}
+                  marginTop={"3px"}
                 >
                   <Link>Lates Story</Link>
                 </Box>
