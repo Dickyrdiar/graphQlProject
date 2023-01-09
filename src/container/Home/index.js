@@ -10,6 +10,7 @@ import {
   CircularProgress,
   LinkBox,
   LinkOverlay,
+  Image,
 } from "@chakra-ui/react";
 import styled from "styled-components";
 import ProductCard from "../../components/ProductList/card";
@@ -19,6 +20,7 @@ import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 // import Header from "./components/Header";
 import Header from "../../components/Header";
+import { DataBlog } from "./dataBlog";
 
 const HomeIndex = () => {
   const controller = ControllerHome();
@@ -42,17 +44,17 @@ const HomeIndex = () => {
       <Header isLogin />
       <Main>
         <Box
-          width={"80%"}
+          width={"99%"}
           // backgroundColor={"GrayText"}
           display={"flex"}
           // justifyContent={"space-around"}
         >
-          <Box>
+          <Box width={"80%"}>
             {controller.responseDate?.product &&
               controller.responseDate?.product?.map((val) => {
                 return (
                   <>
-                    <Container maxW={"5xl"} as={Stack} spacing={12}>
+                    <Container maxW={"8xl"} as={Stack} spacing={12}>
                       <ProductCard
                         key={val.id}
                         title={val.name}
@@ -99,6 +101,62 @@ const HomeIndex = () => {
                   height={"30px"}
                 />
               </Stack>
+
+              <Box>
+                <Stack direction={"column"} spacing={"5"}>
+                  <Box>
+                    {DataBlog &&
+                      DataBlog.map((val) => {
+                        return (
+                          <>
+                            <Stack
+                              spacing={3}
+                              direction={"row"}
+                              maxW={"2xl"}
+                              padding={"40px"}
+                              // display={"flex"}
+                              // justifyContent={"space-around"}
+                            >
+                              <Box
+                                style={{
+                                  fontSize: "12px",
+                                  color: "gray",
+                                  marginTop: "-15px",
+                                }}
+                                width={"30em"}
+                                key={val.id}
+                              >
+                                {val.title}
+
+                                <Box
+                                  style={{
+                                    fontSize: "13px",
+                                    fontWeight: "120",
+                                    color: " #2b2f3c",
+                                  }}
+                                >
+                                  time
+                                </Box>
+                              </Box>
+
+                              <Box>
+                                <Image
+                                  src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                                  alt="Green double couch with wooden legs"
+                                  width={"90px"}
+                                  height={"50px"}
+                                  padding={"-4px"}
+                                  margin={"-20px"}
+                                  borderRadius="sm"
+                                />
+                              </Box>
+                            </Stack>
+                          </>
+                        );
+                      })}
+                  </Box>
+                </Stack>
+              </Box>
             </Container>
           </Box>
         </Box>
