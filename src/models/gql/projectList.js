@@ -14,12 +14,15 @@ export const GET_PROJECT = gql`
 `;
 
 export const ADD_PROJECT = gql`
-  mutation ($name: String!, $desc: String!, $icon: String!) {
-    insert_project(objects: { name: $name, desc: $desc, icon: $icon }) {
+  mutation ($name: String!, $desc: String!, $icon: String!, $image: String!) {
+    insert_project(
+      objects: { name: $name, desc: $desc, icon: $icon, image: $image }
+    ) {
       returning {
         name
         desc
         icon
+        image
       }
     }
   }

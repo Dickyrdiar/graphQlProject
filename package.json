@@ -17,6 +17,7 @@
     "axios": "^1.2.2",
     "dotenv": "^16.0.3",
     "eslint-plugin-react": "^7.31.11",
+    "formik": "^2.2.9",
     "framer-motion": "^8.0.2",
     "graphql": "^16.6.0",
     "graphql-tag": "^2.12.6",
@@ -26,7 +27,8 @@
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

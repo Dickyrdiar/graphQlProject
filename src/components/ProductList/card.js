@@ -92,7 +92,7 @@ const CardWrapper = styled.div`
 const CardLabel = styled.div`
   font-size: 14px;
   font-weight: 600;
-  color: gray;
+  color: "#21293b";
   margin-top: -3.7em;
   /* text-align: right; */
   text-align: left;
