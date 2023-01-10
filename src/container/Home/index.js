@@ -21,9 +21,12 @@ import { Link } from "react-router-dom";
 // import Header from "./components/Header";
 import Header from "../../components/Header";
 import { DataBlog } from "./dataBlog";
+import Footer from "../../components/Footer";
 
 const HomeIndex = () => {
   const controller = ControllerHome();
+
+  console.log("blog", controller.blog);
 
   if (controller.loading) {
     return (
@@ -69,7 +72,7 @@ const HomeIndex = () => {
                     <DetailModal
                       isOpen={controller.openDetail}
                       onClose={controller.handleOnClose}
-                      name={val.name}
+                      // name={val.name}
                     />
                   </>
                 );
@@ -89,7 +92,7 @@ const HomeIndex = () => {
                     color: "gray",
                   }}
                   maxW={"40"}
-                  color={"gray.800"}
+                  color={"#21293"}
                   marginTop={"3px"}
                 >
                   <Link>Lates Story</Link>
@@ -114,13 +117,11 @@ const HomeIndex = () => {
                               direction={"row"}
                               maxW={"2xl"}
                               padding={"40px"}
-                              // display={"flex"}
-                              // justifyContent={"space-around"}
                             >
                               <Box
                                 style={{
                                   fontSize: "12px",
-                                  color: "gray",
+                                  color: "#21293",
                                   marginTop: "-15px",
                                 }}
                                 width={"30em"}
@@ -154,6 +155,9 @@ const HomeIndex = () => {
                           </>
                         );
                       })}
+                  </Box>
+                  <Box padding={"30px"}>
+                    <Footer />
                   </Box>
                 </Stack>
               </Box>

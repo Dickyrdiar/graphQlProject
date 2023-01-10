@@ -42,6 +42,16 @@ const Navbar = ({ props, isLogin }) => {
           <>
             <Flex alignItems={"center"}>
               <Menu>
+                <Button
+                  variant={"solid"}
+                  color="#FFFF"
+                  backgroundColor={"#f85964"}
+                  size={"sm"}
+                  mr={4}
+                  // leftIcon={<AddIcon />}
+                >
+                  Add project
+                </Button>
                 <MenuButton
                   as={Button}
                   rounded={"full"}
@@ -62,9 +72,11 @@ const Navbar = ({ props, isLogin }) => {
                   {menuUser &&
                     menuUser.map((val) => {
                       return (
-                        <MenuItem to={val.url} key={val.id}>
-                          {val.name}
-                        </MenuItem>
+                        <Stack spacing={8} direction={"column"} padding={"4px"}>
+                          <MenuItem to={val.url} key={val.id}>
+                            {val.name}
+                          </MenuItem>
+                        </Stack>
                       );
                     })}
                 </MenuList>

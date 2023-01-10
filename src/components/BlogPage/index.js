@@ -1,7 +1,3 @@
-// const BlogPage = () => {
-//   return (
+const BlogPage = () => {};
 
-//   )
-// }
-
-// export default BlogPage
+export default BlogPage;
