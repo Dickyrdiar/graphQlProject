@@ -73,6 +73,7 @@ const HomeIndex = () => {
                       isOpen={controller.openDetail}
                       onClose={controller.handleOnClose}
                       // name={val.name}
+                      data={controller.responseDate}
                     />
                   </>
                 );
@@ -131,7 +132,7 @@ const HomeIndex = () => {
 
                                 <Box
                                   style={{
-                                    fontSize: "13px",
+                                    fontSize: "11px",
                                     fontWeight: "120",
                                     color: " #2b2f3c",
                                   }}

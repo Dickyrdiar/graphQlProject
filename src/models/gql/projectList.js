@@ -9,6 +9,7 @@ export const GET_PROJECT = gql`
       name
       timeStamp
       product_id
+      url
     }
   }
 `;

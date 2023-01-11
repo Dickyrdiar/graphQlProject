@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 
 const DetailModal = ({ isOpen, onClose, data }) => {
+  console.log("data", data);
   return (
     <Container maxW={"7xl"}>
       <Modal size={"xl"} isOpen={isOpen} onClose={onClose}>
