@@ -126,7 +126,7 @@ const Card = styled.div`
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  height: 99px;
+  height: 150px;
   padding: 0 30px;
   gap: 20px;
   :hover {

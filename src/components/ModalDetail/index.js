@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import {
@@ -13,9 +14,16 @@ import {
   Button,
   Box,
 } from "@chakra-ui/react";
+import { visit } from "graphql";
 
-const DetailModal = ({ isOpen, onClose, data }) => {
-  console.log("data", data);
+const DetailModal = ({ isOpen, onClose, name, desc, link }) => {
+  // console.log("data", name);
+
+  const handleClickVisit = () => {
+    window.open(link);
+    console.log("click");
+  };
+
   return (
     <Container maxW={"7xl"}>
       <Modal size={"xl"} isOpen={isOpen} onClose={onClose}>
@@ -24,7 +32,7 @@ const DetailModal = ({ isOpen, onClose, data }) => {
         <ModalContent maxW={"70%"} padding={"40px"}>
           <ModalHeader>
             <Box display={"flex"} justifyContent="space-between">
-              <Box>Modal title</Box>
+              <Box>{name}</Box>
               <Box>
                 {" "}
                 <Button
@@ -34,6 +42,7 @@ const DetailModal = ({ isOpen, onClose, data }) => {
                   }}
                   backgroundColor={"#ffff"}
                   mr={3}
+                  onClick={handleClickVisit}
                 >
                   Visit
                 </Button>
@@ -50,9 +59,8 @@ const DetailModal = ({ isOpen, onClose, data }) => {
 
           <ModalBody>
             <Text fontWeight="bold" mb="1rem">
-              You can scroll the content behind the modal
+              {desc}
             </Text>
-            {/* <Lorem count={2} /> */}
           </ModalBody>
         </ModalContent>
       </Modal>
