@@ -18,8 +18,6 @@ import DetailModal from "../../components/ModalDetail";
 import ControllerHome from "../../controller/home.controller";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
-// import Header from "./components/Header";
-import Header from "../../components/Header";
 import { DataBlog } from "./dataBlog";
 import Footer from "../../components/Footer";
 
@@ -44,7 +42,6 @@ const HomeIndex = () => {
 
   return (
     <>
-      <Header isLogin />
       <Main>
         <Box
           width={"99%"}
@@ -52,7 +49,7 @@ const HomeIndex = () => {
           display={"flex"}
           // justifyContent={"space-around"}
         >
-          <Box width={"80%"}>
+          <Box width={"60%"}>
             {controller.responseDate?.product &&
               controller.responseDate?.product?.map((val) => {
                 return (
@@ -73,7 +70,9 @@ const HomeIndex = () => {
                       isOpen={controller.openDetail}
                       onClose={controller.handleOnClose}
                       // name={val.name}
-                      data={controller.responseDate}
+                      name={val.name}
+                      desc={val.desc}
+                      link={val.url}
                     />
                   </>
                 );

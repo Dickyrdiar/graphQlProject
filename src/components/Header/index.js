@@ -19,6 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 import HeaderController from "../../controller/header.controller";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ props, isLogin }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,6 +35,7 @@ const Navbar = ({ props, isLogin }) => {
         isOpen={isOpen}
         valueSeach={controller.valueSearch}
         handleValueSearch={controller.handleValueSearch}
+        onclick={controller.handleTohome}
       />
 
       {/* <Box justify={['flex-end']} backgroundColor={'gray.600'}>Sign In</Box> */}
@@ -48,6 +50,7 @@ const Navbar = ({ props, isLogin }) => {
                   backgroundColor={"#f85964"}
                   size={"sm"}
                   mr={4}
+                  onClick={controller.hadleUploadButton}
                   // leftIcon={<AddIcon />}
                 >
                   Add project
@@ -149,7 +152,7 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
   );
 };
 
-const MenuLinks = ({ isOpen, valueSeach, handleValueSearch }) => {
+const MenuLinks = ({ isOpen, valueSeach, handleValueSearch, onclick }) => {
   return (
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
@@ -167,6 +170,7 @@ const MenuLinks = ({ isOpen, valueSeach, handleValueSearch }) => {
           color="#f85964"
           width={"40"}
           height={"40"}
+          onClick={onclick}
         />
         <Stack>
           <InputGroup>
