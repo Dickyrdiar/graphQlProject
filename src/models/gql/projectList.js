@@ -2,14 +2,13 @@ import { gql } from "@apollo/client";
 
 export const GET_PROJECT = gql`
   query {
-    product {
-      desc
-      icon
-      image
+    Project {
       name
-      timeStamp
-      product_id
-      url
+      icon
+      desc
+      di_project
+      link
+      picture
     }
   }
 `;
