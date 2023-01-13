@@ -12,6 +12,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import styled from "styled-components";
+import ButtonController from "../../utils/button";
 import FormController from "../../utils/form";
 
 const FormUpload = () => {
@@ -42,6 +43,7 @@ const FormUpload = () => {
                           label={"Name Project"}
                           type={"String"}
                           desc={"input name project is requires"}
+                          placeholder={"name is required "}
                         />
                       </TabPanel>
                     </Box>
@@ -54,17 +56,12 @@ const FormUpload = () => {
                 justifyContent={"flex-end"}
                 padding={"20px"}
               >
-                <Button
-                  variant={"solid"}
-                  color="#FFFF"
-                  backgroundColor={"#f85964"}
-                  size={"sm"}
-                  mr={4}
-                  // onClick={controller.hadleUploadButton}
-                  // leftIcon={<AddIcon />}
-                >
-                  Next
-                </Button>
+                <ButtonController
+                  disabled
+                  validColor
+                  color={"#ffff"}
+                  props={"Next"}
+                />
               </Box>
             </Card>
           </Box>

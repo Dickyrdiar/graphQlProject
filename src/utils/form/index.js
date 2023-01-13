@@ -8,11 +8,11 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-const FormController = ({ label, type, desc }) => {
+const FormController = ({ label, type, desc, placeholder }) => {
   return (
     <FormControl>
       <FormLabel>{label}</FormLabel>
-      <Input type={type} />
+      <Input type={type} placeholder={placeholder} />
       <FormHelperText>{desc}</FormHelperText>
     </FormControl>
   );
