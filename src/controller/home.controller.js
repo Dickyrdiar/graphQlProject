@@ -1,23 +1,23 @@
 import { useQuery } from "@apollo/client";
-
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GET_PROJECT } from "../models/gql/projectList";
-import { getDataFromApi } from "../redux/api";
+import { getDataApi } from "../redux/api";
 
 function ControllerHome() {
   const [responseDate, setResponseData] = useState([]);
   const [errorData, setErrorData] = useState("");
   const [openDetail, setOpenDetail] = useState(false);
+
+  const { loading, error, data } = useQuery(GET_PROJECT);
+  const blog = useSelector((state) => state.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getDataFromApi());
-  }, [dispatch]);
+    dispatch(getDataApi());
+  }, []);
 
-  console.log("dispatch", dispatch);
-
-  const { loading, error, data } = useQuery(GET_PROJECT);
+  console.log("blog", blog);
 
   useEffect(() => {
     if (data) {
