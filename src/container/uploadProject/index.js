@@ -12,10 +12,15 @@ import {
   Button,
 } from "@chakra-ui/react";
 import styled from "styled-components";
+import controllerUpload from "../../controller/upload.controller";
 import ButtonController from "../../utils/button";
 import FormController from "../../utils/form";
 
 const FormUpload = () => {
+  const controller = controllerUpload();
+
+  console.log("value", controller.formik.values.link);
+  // console.log("value2")
   return (
     <Main>
       <Container maxW={"80%"}>
@@ -41,9 +46,11 @@ const FormUpload = () => {
                       <TabPanel>
                         <FormController
                           label={"Name Project"}
-                          type={"String"}
+                          // type="text"
                           desc={"input name project is requires"}
                           placeholder={"name is required "}
+                          value={controller.formik.values.link}
+                          onChange={controller.formik.handleChange}
                         />
                       </TabPanel>
                     </Box>

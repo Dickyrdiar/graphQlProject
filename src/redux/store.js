@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import blogSlice from "./blogSlice";
+import { getDataApi } from "./api";
 
 export const store = configureStore({
   reducer: {
-    blog: blogSlice,
+    apiSlice: getDataApi,
   },
 });

@@ -8,11 +8,23 @@ import {
   Input,
 } from "@chakra-ui/react";
 
-const FormController = ({ label, type, desc, placeholder }) => {
+const FormController = ({
+  label,
+  // type,
+  desc,
+  placeholder,
+  value,
+  onChange,
+}) => {
   return (
     <FormControl>
       <FormLabel>{label}</FormLabel>
-      <Input type={type} placeholder={placeholder} />
+      <Input
+        value={value}
+        onChange={onChange}
+        // type={type}
+        placeholder={placeholder}
+      />
       <FormHelperText>{desc}</FormHelperText>
     </FormControl>
   );
