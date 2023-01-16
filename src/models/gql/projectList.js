@@ -13,17 +13,18 @@ export const GET_PROJECT = gql`
   }
 `;
 
-export const ADD_PROJECT = gql`
-  mutation ($name: String!, $desc: String!, $icon: String!, $image: String!) {
-    insert_project(
-      objects: { name: $name, desc: $desc, icon: $icon, image: $image }
-    ) {
-      returning {
-        name
-        desc
-        icon
-        image
-      }
-    }
-  }
-`;
+// export const ADD_PROJECT = gql`
+//   mutation (name: $String, picture: $String, icon: $String desc: $Text, link: $Text) {
+//     insert_project(
+//       objects: { name: $name, desc: $desc, link: $link, icon: $icon, picture: $picture }
+//     ) {
+//       returning {
+//         name,
+//         desc,
+//         link,
+//         icon,
+//         picture
+//       }
+//     }
+//   }
+// `;
