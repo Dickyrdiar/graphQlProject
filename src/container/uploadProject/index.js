@@ -19,8 +19,7 @@ import FormController from "../../utils/form";
 const FormUpload = () => {
   const controller = controllerUpload();
 
-  console.log("value", controller.formik.values.link);
-  // console.log("value2")
+  console.log("link", controller.link);
   return (
     <Main>
       <Container maxW={"80%"}>
@@ -45,11 +44,12 @@ const FormUpload = () => {
                     <Box maxW={"60%"}>
                       <TabPanel>
                         <FormController
+                          onSubmit={controller.formik.handleSubmit}
                           label={"Name Project"}
-                          // type="text"
+                          type="text"
                           desc={"input name project is requires"}
                           placeholder={"name is required "}
-                          value={controller.formik.values.link}
+                          value={controller.formik.values.name}
                           onChange={controller.formik.handleChange}
                         />
                       </TabPanel>
@@ -64,7 +64,7 @@ const FormUpload = () => {
                 padding={"20px"}
               >
                 <ButtonController
-                  disabled
+                  disabled={controller.link.length < 6}
                   validColor
                   color={"#ffff"}
                   props={"Next"}

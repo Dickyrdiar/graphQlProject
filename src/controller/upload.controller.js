@@ -1,24 +1,25 @@
+// import { useFormik } from "formik";
+import { useState } from "react";
 import { useFormik } from "formik";
-// import { yupValidation } from "../models/yupValidation";
-// import Yup from "yup";
-import * as Yup from "yup";
+import { uploadSchema } from "../models/yupValidation";
 
 const controllerUpload = () => {
+  const [link, setLink] = useState("");
+
   const formik = useFormik({
     initialValues: {
-      link: "",
       name: "",
       desc: "",
+      link: "",
     },
-
-    validationSchema: Yup.object({
-      link: Yup.string().required("Link is Required"),
-      name: Yup.string().required("Name is Required"),
-      desc: Yup.string().required("Desc is Required"),
-    }),
+    validationSchema: uploadSchema,
   });
 
-  return { formik };
+  const handleInputLink = (e) => {
+    setLink(e.target.value);
+  };
+
+  return { link, handleInputLink, formik };
 };
 
 export default controllerUpload;

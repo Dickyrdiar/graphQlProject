@@ -10,14 +10,14 @@ function ControllerHome() {
   const [openDetail, setOpenDetail] = useState(false);
 
   const { loading, error, data } = useQuery(GET_PROJECT);
-  const blog = useSelector((state) => state.data);
+  const apiSlice = useSelector((state) => state.apiSlice);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getDataApi());
   }, []);
 
-  console.log("blog", blog);
+  console.log("blog", apiSlice);
 
   useEffect(() => {
     if (data) {
