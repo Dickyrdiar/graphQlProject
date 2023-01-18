@@ -10,20 +10,23 @@ import {
 
 const FormController = ({
   label,
-  // type,
+  type,
   desc,
   placeholder,
   value,
   onChange,
+  name,
+  onSubmit,
 }) => {
   return (
-    <FormControl>
+    <FormControl onSubmit={onSubmit}>
       <FormLabel>{label}</FormLabel>
       <Input
         value={value}
         onChange={onChange}
-        // type={type}
+        type={type}
         placeholder={placeholder}
+        name={name}
       />
       <FormHelperText>{desc}</FormHelperText>
     </FormControl>
