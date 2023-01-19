@@ -11,7 +11,7 @@ const controllerUpload = () => {
   const [name, setName] = useState("");
   const [desc, setDesc] = useState("");
   const [link, setLink] = useState("");
-  const [progress, setProgress] = useState(33.33);
+  const [progress, setProgress] = useState(10);
   const [step, setStep] = useState(1);
   const toast = useToast();
 

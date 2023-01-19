@@ -21,7 +21,7 @@ import { Icon } from "@iconify/react";
 import HeaderController from "../../controller/header.controller";
 import { useNavigate } from "react-router-dom";
 
-const Navbar = ({ props, isLogin }) => {
+const Navbar = ({ props, isLogin, data }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const controller = HeaderController();

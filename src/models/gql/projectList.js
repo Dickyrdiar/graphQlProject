@@ -14,7 +14,7 @@ export const GET_PROJECT = gql`
 `;
 
 export const add_project = gql`
-  mutation ($name: String, $desc: String, $url: String) {
+  mutation Project($name: String, $desc: String, $url: String) {
     Project(objects: { name: $name, desc: $desc, url: $url }) {
       returning {
         di_project
