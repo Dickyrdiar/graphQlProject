@@ -7,22 +7,25 @@ import {
   Container,
 } from "@chakra-ui/react";
 import controllerUpload from "../../controller/upload.controller";
+import EditorDesc from "../../utils/EditorDesc";
 import FormController from "../../utils/form";
 
 const Multistep = () => {
   const controller = controllerUpload();
 
-  console.log("name", controller.name);
+  console.log("data", controller.desc);
 
   return (
     <>
       <Container maxW={"80%"}>
-        <Box>Post A new Project</Box>
+        <Box p={6} m="10px auto" padding={"40px"}>
+          Post A new Project
+        </Box>
         <Box
           borderWidth="1px"
           rounded="lg"
           shadow="1px 1px 3px rgba(0,0,0,0.3)"
-          maxWidth={800}
+          maxWidth={"100em"}
           p={6}
           m="10px auto"
           as="form"
@@ -33,7 +36,6 @@ const Multistep = () => {
             mb="5%"
             mx="5%"
             isAnimated
-            // color={"#f85964"}
             colorScheme="red"
           ></Progress>
           {controller.step === 1 ? (
@@ -48,6 +50,13 @@ const Multistep = () => {
               />
             </Box>
           ) : controller.step === 2 ? (
+            <EditorDesc
+              value={controller.desc}
+              onChange={controller.handleChangeInput}
+            />
+          ) : controller.step === 3 ? (
+            <FormController />
+          ) : controller.step === 4 ? (
             <FormController />
           ) : (
             <FormController />
@@ -59,36 +68,38 @@ const Multistep = () => {
                 <Button
                   onClick={() => {
                     controller.setStep(controller.step - 1);
-                    controller.setProgress(controller.progress - 33.33);
+                    controller.setProgress(controller.progress - 24);
                   }}
                   isDisabled={controller.step === 1}
                   colorScheme="red"
                   variant="solid"
                   w="7rem"
                   mr="5%"
-                  // color={"#f85964"}
                 >
                   Back
                 </Button>
                 <Button
                   w="7em"
-                  isDisabled={controller.step === 3}
+                  isDisabled={controller.step === 5}
                   onClick={() => {
                     controller.setStep(controller.step + 1);
-                    if (controller.step === 3) {
+                    if (controller.step === 5) {
                       controller.setProgress(100);
                     } else {
-                      controller.setProgress(controller.progress + 33.33);
+                      controller.setProgress(controller.progress + 24);
                     }
                   }}
                   colorScheme="#f85964"
                   variant="outline"
+                  disabled={
+                    controller.step === 1 ? controller.name.length > 6 : null
+                  }
                 >
                   Next
                 </Button>
               </Flex>
 
-              {controller.step === 3 ? (
+              {controller.step === 5 ? (
                 <Button
                   w="7rem"
                   colorScheme="red"

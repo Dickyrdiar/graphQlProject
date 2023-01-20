@@ -3,6 +3,6 @@ import { getDataApi } from "./api";
 
 export const store = configureStore({
   reducer: {
-    apiSlice: getDataApi,
+    blog: getDataApi,
   },
 });

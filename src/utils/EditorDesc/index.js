@@ -1,7 +1,14 @@
 import { Box } from "@chakra-ui/react";
+import { CKEditor } from "ckeditor4-react";
 
-const EditorDesc = () => {
-  return <Box>this si editor</Box>;
+const EditorDesc = (value, onChange) => {
+  return (
+    <>
+      <Box>
+        <CKEditor value={value} onChange={onChange} />
+      </Box>
+    </>
+  );
 };
 
 export default EditorDesc;
