@@ -5,6 +5,7 @@ import {
   Flex,
   Button,
   Container,
+  FormControl,
 } from "@chakra-ui/react";
 import controllerUpload from "../../controller/upload.controller";
 import EditorDesc from "../../utils/EditorDesc";
@@ -13,7 +14,7 @@ import FormController from "../../utils/form";
 const Multistep = () => {
   const controller = controllerUpload();
 
-  console.log("data", controller.desc);
+  console.log("data", controller.formik.values.name);
 
   return (
     <>
@@ -38,29 +39,28 @@ const Multistep = () => {
             isAnimated
             colorScheme="red"
           ></Progress>
-          {controller.step === 1 ? (
-            <Box maxW={"60%"}>
-              <FormController
-                label={"Name Project"}
-                type="text"
-                desc={"input name project is requires"}
-                placeholder={"name is required "}
-                value={controller.name}
-                onChange={controller.handleChangeInput}
-              />
-            </Box>
-          ) : controller.step === 2 ? (
-            <EditorDesc
-              value={controller.desc}
-              onChange={controller.handleChangeInput}
-            />
-          ) : controller.step === 3 ? (
-            <FormController />
-          ) : controller.step === 4 ? (
-            <FormController />
-          ) : (
-            <FormController />
-          )}
+          <FormControl>
+            {controller.step === 1 ? (
+              <Box maxW={"60%"}>
+                <FormController
+                  label={"Name Project"}
+                  type="text"
+                  desc={"input name project is requires"}
+                  placeholder={"name is required "}
+                  value={controller.formik.values.name}
+                  onChange={controller.formik.handleChange}
+                />
+              </Box>
+            ) : controller.step === 2 ? (
+              <EditorDesc />
+            ) : controller.step === 3 ? (
+              <FormController />
+            ) : controller.step === 4 ? (
+              <FormController />
+            ) : (
+              <FormController />
+            )}
+          </FormControl>
 
           <ButtonGroup mt="5%" w="100%">
             <Flex w="100%" justifyContent="space-between">
@@ -104,7 +104,7 @@ const Multistep = () => {
                   w="7rem"
                   colorScheme="red"
                   variant="solid"
-                  onClick={controller.handleUploadProject}
+                  onClick={controller.formik.handleSubmit}
                 >
                   Submit
                 </Button>
