@@ -1,12 +1,25 @@
-import { Box } from "@chakra-ui/react";
-import { CKEditor } from "ckeditor4-react";
+import {
+  Textarea,
+  FormControl,
+  FormLabel,
+  // FormErrorMessage,
+  FormHelperText,
+} from "@chakra-ui/react";
 
-const EditorDesc = (value, onChange) => {
+const EditorDesc = (value, onChange, onSubmit, label, desc) => {
   return (
     <>
-      <Box>
-        <CKEditor value={value} onChange={onChange} />
-      </Box>
+      <FormControl onSubmit={onSubmit}>
+        <FormLabel>{label}</FormLabel>
+        <Textarea
+          width={"800px"}
+          height={"400"}
+          value={value}
+          onChange={onChange}
+          placeholder="Here is a sample placeholder"
+        />
+        <FormHelperText>{desc}</FormHelperText>
+      </FormControl>
     </>
   );
 };
