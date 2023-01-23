@@ -4,69 +4,60 @@ import { useMutation } from "@apollo/client";
 import { add_project } from "../models/gql/projectList";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
-import * as Yup from "yup";
-import { useFormik } from "formik";
 
 const controllerUpload = () => {
   const [addProject] = useMutation(add_project);
   const [loading, setLoading] = useState(false);
-  // const [name, setName] = useState("");
-  // const [desc, setDesc] = useState("");
-  // const [link, setLink] = useState("");
+  const [name, setName] = useState("");
+  const [desc, setDesc] = useState("");
+  const [link, setLink] = useState("");
   const [progress, setProgress] = useState(10);
   const [step, setStep] = useState(1);
   const toast = useToast();
 
-  const initialValues = {
-    name: "",
-    desc: "",
-    link: "",
+  const handleChangeInputName = (e) => {
+    setName(e.target.value);
   };
 
-  const validationSchema = Yup.object({
-    name: Yup.string().required("Required").max(25, "Must be 25 character"),
-    desc: Yup.string()
-      .required("Required")
-      .max(60, "desc must be 60 character"),
-    link: Yup.string().required("Required"),
-  });
+  const handleChangeInputDesc = (e) => {
+    setDesc(e.target.value);
+  };
 
-  const formik = useFormik({
-    initialValues: initialValues,
-    validationSchema: validationSchema,
-    onSubmit: async (event) => {
+  const handleChangeInputLink = (e) => {
+    setLink(e.target.value);
+  };
+
+  const handleSubmitProject = () => {
+    async (event) => {
       try {
-        event.preventDefault();
+        event.prevenDefault();
         await addProject({
-          variables: initialValues,
+          variables: { name, desc, link },
         });
-        setLoading(true);
         useNavigate("/");
+        setLoading(true);
+        console.log("click");
       } catch (error) {
         setLoading(false);
         console.log("error", error);
       }
-    },
-  });
-
-  // const handleChangeInput = (e) => {
-  //   e.preventDefault();
-  //   setName(e.target.value);
-  //   setDesc(e.target.value);
-  //   setLink(e.target.value);
-  // };
+    };
+  };
 
   return {
-    // link
+    name,
+    desc,
+    link,
     loading,
-    // handleUploadProject,
-    formik,
     progress,
     setProgress,
     step,
     setStep,
     toast,
-    // handleChangeInput,
+    handleChangeInputName,
+    handleChangeInputLink,
+    handleChangeInputDesc,
+    handleSubmitProject,
   };
 };
 
