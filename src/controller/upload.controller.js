@@ -14,6 +14,17 @@ const controllerUpload = () => {
   const [progress, setProgress] = useState(10);
   const [step, setStep] = useState(1);
   const toast = useToast();
+  const history = useNavigate();
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [icon, setIcon] = useState(null);
+
+  const handleChangefile = (e) => {
+    setSelectedFile(e.target.value);
+  };
+
+  const handleChangeIcon = (e) => {
+    setIcon(e.target.value);
+  };
 
   const handleChangeInputName = (e) => {
     setName(e.target.value);
@@ -27,21 +38,20 @@ const controllerUpload = () => {
     setLink(e.target.value);
   };
 
-  const handleSubmitProject = () => {
-    async (event) => {
-      try {
-        event.prevenDefault();
-        await addProject({
-          variables: { name, desc, link },
-        });
-        useNavigate("/");
-        setLoading(true);
-        console.log("click");
-      } catch (error) {
-        setLoading(false);
-        console.log("error", error);
-      }
-    };
+  const handleSubmitProject = async (event) => {
+    try {
+      console.log("click");
+      event.preventDefault();
+      await addProject({
+        variables: { name, desc, link, selectedFile },
+      });
+      setLoading(true);
+      history("/");
+      console.log("click");
+    } catch (error) {
+      setLoading(false);
+      console.log("error", error);
+    }
   };
 
   return {
@@ -54,10 +64,14 @@ const controllerUpload = () => {
     step,
     setStep,
     toast,
+    icon,
+    selectedFile,
     handleChangeInputName,
     handleChangeInputLink,
     handleChangeInputDesc,
     handleSubmitProject,
+    handleChangefile,
+    handleChangeIcon,
   };
 };
 

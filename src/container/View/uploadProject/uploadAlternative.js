@@ -14,6 +14,8 @@ import FormController from "../../../utils/form";
 const Multistep = () => {
   const controller = controllerUpload();
 
+  console.log("file", controller.selectedFile);
+
   return (
     <>
       <Container maxW={"80%"}>
@@ -58,11 +60,35 @@ const Multistep = () => {
                 placeholder={"max 60 word"}
               />
             ) : controller.step === 3 ? (
-              <FormController />
+              <Box maxW={"60%"}>
+                <FormController
+                  label={"Link Project"}
+                  type="text"
+                  desc={"input Link project is requires"}
+                  placeholder={"name is required "}
+                  value={controller.link}
+                  onChange={controller.handleChangeInputLink}
+                  id={"name-project-upload"}
+                />
+              </Box>
             ) : controller.step === 4 ? (
-              <FormController />
+              <Box maxW={"60%"}>
+                <FormController
+                  label={"Image Project"}
+                  type={"file"}
+                  value={controller.selectedFile}
+                  onChange={controller.handleChangefile}
+                />
+              </Box>
             ) : (
-              <FormController />
+              <Box maxW={"60%"}>
+                <FormController
+                  label={"Image Project"}
+                  type={"file"}
+                  value={controller.icon}
+                  onChange={controller.handleChangeIcon}
+                />
+              </Box>
             )}
           </FormControl>
 
