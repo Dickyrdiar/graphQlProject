@@ -47,6 +47,7 @@ const Multistep = () => {
                   placeholder={"name is required "}
                   value={controller.name}
                   onChange={controller.handleChangeInputName}
+                  id={"name-project-upload"}
                 />
               </Box>
             ) : controller.step === 2 ? (
