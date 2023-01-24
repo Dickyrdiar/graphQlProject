@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { GET_PROJECT } from "../models/gql/projectList";
 import { getDataApi } from "../redux/api";
 
@@ -40,6 +41,10 @@ function ControllerHome() {
     setOpenDetail(false);
   };
 
+  const handleChangetoblog = () => {
+    useNavigate("/blog");
+  };
+
   console.log(loading);
 
   return {
@@ -49,6 +54,7 @@ function ControllerHome() {
     handleClick,
     openDetail,
     handleOnClose,
+    handleChangetoblog,
     // blog,
   };
 }

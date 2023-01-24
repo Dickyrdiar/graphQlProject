@@ -13,13 +13,13 @@ import {
   Image,
 } from "@chakra-ui/react";
 import styled from "styled-components";
-import ProductCard from "../../components/ProductList/card";
-import DetailModal from "../../components/ModalDetail";
-import ControllerHome from "../../controller/home.controller";
+import ProductCard from "../../../components/ProductList/card";
+import DetailModal from "../../../components/ModalDetail";
+import ControllerHome from "../../../controller/home.controller";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
 import { DataBlog } from "./dataBlog";
-import Footer from "../../components/Footer";
+import Footer from "../../../components/Footer";
 
 const HomeIndex = () => {
   const controller = ControllerHome();

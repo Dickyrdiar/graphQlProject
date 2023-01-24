@@ -7,14 +7,12 @@ import {
   Container,
   FormControl,
 } from "@chakra-ui/react";
-import controllerUpload from "../../controller/upload.controller";
-import EditorDesc from "../../utils/EditorDesc";
-import FormController from "../../utils/form";
+import controllerUpload from "../../../controller/upload.controller";
+import EditorDesc from "../../../utils/EditorDesc";
+import FormController from "../../../utils/form";
 
 const Multistep = () => {
   const controller = controllerUpload();
-
-  console.log("data", controller.formik.values.name);
 
   return (
     <>
@@ -47,12 +45,17 @@ const Multistep = () => {
                   type="text"
                   desc={"input name project is requires"}
                   placeholder={"name is required "}
-                  value={controller.formik.values.name}
-                  onChange={controller.formik.handleChange}
+                  value={controller.name}
+                  onChange={controller.handleChangeInputName}
                 />
               </Box>
             ) : controller.step === 2 ? (
-              <EditorDesc />
+              <EditorDesc
+                label={"Description"}
+                value={controller.desc}
+                onChange={controller.handleChangeInputDesc}
+                placeholder={"max 60 word"}
+              />
             ) : controller.step === 3 ? (
               <FormController />
             ) : controller.step === 4 ? (
@@ -104,7 +107,7 @@ const Multistep = () => {
                   w="7rem"
                   colorScheme="red"
                   variant="solid"
-                  onClick={controller.formik.handleSubmit}
+                  onClick={controller.handleSubmitProject}
                 >
                   Submit
                 </Button>

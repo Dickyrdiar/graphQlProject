@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import {
   Textarea,
   FormControl,
@@ -6,7 +7,7 @@ import {
   FormHelperText,
 } from "@chakra-ui/react";
 
-const EditorDesc = (value, onChange, onSubmit, label, desc) => {
+function EditorDesc({ value, onChange, onSubmit, label, desc, placeholder }) {
   return (
     <>
       <FormControl onSubmit={onSubmit}>
@@ -16,12 +17,12 @@ const EditorDesc = (value, onChange, onSubmit, label, desc) => {
           height={"400"}
           value={value}
           onChange={onChange}
-          placeholder="Here is a sample placeholder"
+          placeholder={placeholder}
         />
         <FormHelperText>{desc}</FormHelperText>
       </FormControl>
     </>
   );
-};
+}
 
 export default EditorDesc;

@@ -26,6 +26,7 @@ const Navbar = ({ props, isLogin, data }) => {
   const toggle = () => setIsOpen(!isOpen);
   const controller = HeaderController();
 
+  console.log("data", data);
   console.log("valuesearch", controller.valueSearch);
 
   return (
