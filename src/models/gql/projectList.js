@@ -9,6 +9,11 @@ export const GET_PROJECT = gql`
       di_project
       link
       picture
+      timeStamps
+      comment_project {
+        id_comment
+        comment
+      }
     }
   }
 `;

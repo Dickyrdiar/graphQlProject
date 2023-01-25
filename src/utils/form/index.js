@@ -18,6 +18,7 @@ const FormController = ({
   name,
   onSubmit,
   id,
+  multiple,
 }) => {
   return (
     <FormControl onSubmit={onSubmit}>
@@ -29,6 +30,7 @@ const FormController = ({
         placeholder={placeholder}
         name={name}
         id={id}
+        multiple={multiple}
       />
       <FormHelperText>{desc}</FormHelperText>
     </FormControl>

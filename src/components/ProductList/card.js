@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import styled from "styled-components";
-import { Box } from "@chakra-ui/react";
+import { Box, Image } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 
 const ProductCard = ({
@@ -15,13 +15,35 @@ const ProductCard = ({
   commentCount,
   image,
 }) => {
+  console.log("image", image === null);
+
   return (
     <>
       <Main>
         <CardWrapper>
           <Card key={key} onClick={onClick}>
             <div className="icon">
-              <img src={image} alt="icon" />
+              {/* <img src={image} alt="icon" /> */}
+              {image === null ? (
+                <Image
+                  src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                  width={"90px"}
+                  height={"50px"}
+                  padding={"-4px"}
+                  margin={"-20px"}
+                  borderRadius="sm"
+                />
+              ) : (
+                // <img src={image} />
+                <Image
+                  src={image}
+                  width={"90px"}
+                  height={"50px"}
+                  padding={"-4px"}
+                  margin={"-20px"}
+                  borderRadius="sm"
+                />
+              )}
             </div>
 
             <Box

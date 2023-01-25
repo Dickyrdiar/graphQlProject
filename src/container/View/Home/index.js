@@ -47,6 +47,7 @@ const HomeIndex = () => {
           width={"99%"}
           // backgroundColor={"GrayText"}
           display={"flex"}
+          padding={"3%"}
           // justifyContent={"space-around"}
         >
           <Box width={"60%"}>
@@ -55,25 +56,18 @@ const HomeIndex = () => {
                 return (
                   <>
                     <Container maxW={"8xl"} as={Stack} spacing={12}>
-                      <ProductCard
-                        key={val.id}
-                        title={val.name}
-                        desc={val.desc}
-                        image={val.image}
-                        // onClick={handleClick}
-                        onClick={controller.handleClick}
-                        // vote={val.vote}
-                        // commentCount={val.comment}
-                      />
+                      <Link to={`/detail/${val.name}`}>
+                        <ProductCard
+                          key={val.id}
+                          title={val.name}
+                          desc={val.desc}
+                          image={val.icon}
+                          onClick={controller.handleClick}
+                          // vote={val.vote}
+                          // commentCount={val.comment}
+                        />
+                      </Link>
                     </Container>
-                    <DetailModal
-                      isOpen={controller.openDetail}
-                      onClose={controller.handleOnClose}
-                      // name={val.name}
-                      name={val.name}
-                      desc={val.desc}
-                      link={val.url}
-                    />
                   </>
                 );
               })}
@@ -174,7 +168,7 @@ export default HomeIndex;
 const Main = styled.div`
   /* display: flex; */
   flex-direction: column;
-  padding: 0 20px 30px 20px;
+  padding: 0 60px 80px 60px;
   > div.content {
     display: flex;
     flex-direction: column;

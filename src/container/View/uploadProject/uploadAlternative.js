@@ -14,8 +14,6 @@ import FormController from "../../../utils/form";
 const Multistep = () => {
   const controller = controllerUpload();
 
-  console.log("file", controller.selectedFile);
-
   return (
     <>
       <Container maxW={"80%"}>
@@ -76,18 +74,21 @@ const Multistep = () => {
                 <FormController
                   label={"Image Project"}
                   type={"file"}
-                  value={controller.selectedFile}
                   onChange={controller.handleChangefile}
                 />
+                {controller.selectedFile.map((image, index) => (
+                  <img key={index} src={image} alt="result project" />
+                ))}
               </Box>
             ) : (
               <Box maxW={"60%"}>
                 <FormController
                   label={"Image Project"}
                   type={"file"}
-                  value={controller.icon}
                   onChange={controller.handleChangeIcon}
+                  multiple
                 />
+                {controller.icon && <img src={controller.icon} alt="icon" />}
               </Box>
             )}
           </FormControl>

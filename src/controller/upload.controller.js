@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { add_project } from "../models/gql/projectList";
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
+// import { getBase64StringFromDataURL } from "../utils/imageConvertBase64";
 
 const controllerUpload = () => {
   const [addProject] = useMutation(add_project);
@@ -15,15 +16,28 @@ const controllerUpload = () => {
   const [step, setStep] = useState(1);
   const toast = useToast();
   const history = useNavigate();
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState([]);
   const [icon, setIcon] = useState(null);
 
   const handleChangefile = (e) => {
-    setSelectedFile(e.target.value);
+    const newImages = [...selectedFile];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      for (let i = 0; i < e.target.files.length; i++) {
+        newImages.push(URL.createObjectURL(e.target.files[i]));
+      }
+    };
+    setSelectedFile(newImages);
   };
 
   const handleChangeIcon = (e) => {
-    setIcon(e.target.value);
+    // setIcon(e.target.value);
+    const icon = e.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setIcon(reader.result);
+    };
+    reader.readAsDataURL(icon);
   };
 
   const handleChangeInputName = (e) => {
@@ -53,6 +67,8 @@ const controllerUpload = () => {
       console.log("error", error);
     }
   };
+
+  // console.log("image file", selectedFile);
 
   return {
     name,

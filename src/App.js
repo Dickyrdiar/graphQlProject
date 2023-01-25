@@ -6,6 +6,7 @@ import HomeIndex from "./container/View/Home";
 import Header from "./components/Header";
 import Multistep from "./container/View/uploadProject/uploadAlternative";
 import BlogPage from "./container/View/blog";
+import DetailProject from "./container/View/detailProject";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<HomeIndex />} />
         <Route path="/upload-project" element={<Multistep />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/detail/:name" element={<DetailProject />} />
       </Routes>
     </>
   );

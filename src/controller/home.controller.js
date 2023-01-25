@@ -33,8 +33,8 @@ function ControllerHome() {
   }, []);
 
   const handleClick = () => {
+    localStorage.setItem("data", responseDate);
     console.log("click");
-    setOpenDetail(true);
   };
 
   const handleOnClose = () => {
@@ -51,10 +51,10 @@ function ControllerHome() {
     responseDate,
     errorData,
     loading,
-    handleClick,
     openDetail,
     handleOnClose,
     handleChangetoblog,
+    handleClick,
     // blog,
   };
 }
