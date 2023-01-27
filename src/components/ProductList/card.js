@@ -15,8 +15,6 @@ const ProductCard = ({
   commentCount,
   image,
 }) => {
-  console.log("image", image === null);
-
   return (
     <>
       <Main>

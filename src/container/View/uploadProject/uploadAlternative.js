@@ -76,8 +76,17 @@ const Multistep = () => {
                   type={"file"}
                   onChange={controller.handleChangefile}
                 />
-                {controller.selectedFile.map((image, index) => (
-                  <img key={index} src={image} alt="result project" />
+                {controller.picture.map((val) => (
+                  <>
+                    <Box
+                      padding={"3px"}
+                      display={"flex"}
+                      maxW={"30%"}
+                      maxH={"30%"}
+                    >
+                      <img key={val.name} src={val.file} alt="result project" />
+                    </Box>
+                  </>
                 ))}
               </Box>
             ) : (
