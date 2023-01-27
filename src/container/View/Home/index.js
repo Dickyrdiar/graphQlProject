@@ -24,8 +24,6 @@ import Footer from "../../../components/Footer";
 const HomeIndex = () => {
   const controller = ControllerHome();
 
-  console.log("blog", controller.blog);
-
   if (controller.loading) {
     return (
       <Box
@@ -56,17 +54,17 @@ const HomeIndex = () => {
                 return (
                   <>
                     <Container maxW={"8xl"} as={Stack} spacing={12}>
-                      <Link to={`/detail/${val.name}`}>
-                        <ProductCard
-                          key={val.id}
-                          title={val.name}
-                          desc={val.desc}
-                          image={val.icon}
-                          onClick={controller.handleClick}
-                          // vote={val.vote}
-                          // commentCount={val.comment}
-                        />
-                      </Link>
+                      {/* <Link to={`/detail/${val.name}`}> */}
+                      <ProductCard
+                        key={val.di_project}
+                        title={val.name}
+                        desc={val.desc}
+                        image={val.icon}
+                        onClick={controller.handleClick}
+                        // vote={val.vote}
+                        // commentCount={val.comment}
+                      />
+                      {/* </Link> */}
                     </Container>
                   </>
                 );

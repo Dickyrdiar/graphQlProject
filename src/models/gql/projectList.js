@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const GET_PROJECT = gql`
   query {
-    Project {
+    Project(order_by: { di_project: asc_nulls_last }) {
       name
       icon
       desc
@@ -10,21 +10,17 @@ export const GET_PROJECT = gql`
       link
       picture
       timeStamps
-      comment_project {
-        id_comment
-        comment
-      }
     }
   }
 `;
 
 export const add_project = gql`
   mutation (
-    $name: name
-    $desc: String
-    $link: name
-    $icon: name
-    $picture: name
+    $name: name!
+    $desc: String!
+    $link: name!
+    $icon: character
+    $picture: character
   ) {
     insert_Project(
       objects: {
@@ -43,6 +39,20 @@ export const add_project = gql`
         icon
         picture
       }
+    }
+  }
+`;
+
+export const get_project_by_id = gql`
+  query MyQuery {
+    Project(where: { di_project: { _eq: ID } }) {
+      di_project
+      name
+      desc
+      picture
+      icon
+      link
+      timeStamps
     }
   }
 `;
