@@ -1,7 +1,9 @@
+/* eslint-disable no-unused-vars */
 import { useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 import { GET_PROJECT } from "../models/gql/projectList";
 import { getDataApi } from "../redux/api";
 // import DetailController from "./detail.comtroller";
@@ -11,17 +13,28 @@ function ControllerHome() {
   const [errorData, setErrorData] = useState("");
   const [openDetail, setOpenDetail] = useState(false);
   const [card, setCardIndex] = useState(null);
+  const [valueSearch, setValueSearch] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
 
   const { loading, error, data } = useQuery(GET_PROJECT);
   const blog = useSelector((state) => state.blog);
   const dispatch = useDispatch();
-  // const result = responseDate.find((val) => val.di_project);
+
+  const handleSearchValue = (e) => {
+    setValueSearch(e.target.value);
+
+    const filterSearch = data.filter((item) => {
+      Object.values(item).some((val) =>
+        val.toString().toLowerCase().includes(valueSearch.toLowerCase())
+      );
+    });
+
+    setSearchResult(filterSearch);
+  };
 
   useEffect(() => {
     dispatch(getDataApi());
   }, []);
-
-  console.log("blog", blog);
 
   useEffect(() => {
     if (data) {
@@ -35,11 +48,16 @@ function ControllerHome() {
     }
   }, []);
 
+  const hadleUploadButton = () => {
+    history("/upload-project");
+  };
+
+  const handleTohome = () => {
+    history("/");
+  };
+
   const handleClick = (index) => {
     setCardIndex(index.responseDate);
-
-    // const result = responseDate.find((val) => val.diproject);
-    // console.log("hasil", result);
   };
 
   const handleOnClose = () => {
@@ -50,7 +68,7 @@ function ControllerHome() {
     useNavigate("/blog");
   };
 
-  console.log(card);
+  console.log("resukt", searchResult);
 
   return {
     responseDate,
@@ -60,7 +78,12 @@ function ControllerHome() {
     handleOnClose,
     handleChangetoblog,
     handleClick,
-    // blog,
+    valueSearch,
+    handleSearchValue,
+    card,
+    handleTohome,
+    hadleUploadButton,
+    searchResult,
   };
 }
 
