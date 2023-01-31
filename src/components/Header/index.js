@@ -18,8 +18,6 @@ import {
   MenuDivider,
 } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
-import HeaderController from "../../controller/header.controller";
-import { useNavigate } from "react-router-dom";
 import ControllerHome from "../../controller/home.controller";
 
 const Navbar = ({ props, isLogin, data }) => {
@@ -34,7 +32,6 @@ const Navbar = ({ props, isLogin, data }) => {
         isOpen={isOpen}
         valueSeach={controller.valueSearch}
         handleValueSearch={controller.handleValueSearch}
-        onChangeInput={controller.handleSubmitSearch}
         onclick={controller.handleTohome}
       />
 
@@ -177,7 +174,7 @@ const MenuLinks = ({
           onClick={onclick}
         />
         <Stack>
-          <InputGroup onChange={onChangeInput}>
+          <InputGroup>
             {/* <InputLeftElement pointerEvents={'none'}
               children={<PhoneIcon color='gray.300' />}
             /> */}
