@@ -20,14 +20,12 @@ import {
 import { Icon } from "@iconify/react";
 import HeaderController from "../../controller/header.controller";
 import { useNavigate } from "react-router-dom";
+import ControllerHome from "../../controller/home.controller";
 
 const Navbar = ({ props, isLogin, data }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
-  const controller = HeaderController();
-
-  console.log("data", data);
-  console.log("valuesearch", controller.valueSearch);
+  const controller = ControllerHome();
 
   return (
     <NavBarContainer {...props}>
@@ -36,6 +34,7 @@ const Navbar = ({ props, isLogin, data }) => {
         isOpen={isOpen}
         valueSeach={controller.valueSearch}
         handleValueSearch={controller.handleValueSearch}
+        onChangeInput={controller.handleSubmitSearch}
         onclick={controller.handleTohome}
       />
 
@@ -71,8 +70,6 @@ const Navbar = ({ props, isLogin, data }) => {
                   />
                 </MenuButton>
                 <MenuList>
-                  {/* <MenuItem>Link 1</MenuItem>
-                  <MenuItem>Link 2</MenuItem> */}
                   {menuUser &&
                     menuUser.map((val) => {
                       return (
@@ -153,7 +150,13 @@ const MenuItem = ({ children, isLast, to = "/", ...rest }) => {
   );
 };
 
-const MenuLinks = ({ isOpen, valueSeach, handleValueSearch, onclick }) => {
+const MenuLinks = ({
+  isOpen,
+  valueSeach,
+  handleValueSearch,
+  onclick,
+  onChangeInput,
+}) => {
   return (
     <Box
       display={{ base: isOpen ? "block" : "none", md: "block" }}
@@ -174,7 +177,7 @@ const MenuLinks = ({ isOpen, valueSeach, handleValueSearch, onclick }) => {
           onClick={onclick}
         />
         <Stack>
-          <InputGroup>
+          <InputGroup onChange={onChangeInput}>
             {/* <InputLeftElement pointerEvents={'none'}
               children={<PhoneIcon color='gray.300' />}
             /> */}

@@ -87,7 +87,7 @@ const HomeIndex = () => {
                   color={"#21293"}
                   marginTop={"3px"}
                 >
-                  <Link>Lates Story</Link>
+                  <Link href={controller.handleChangetoblog}>Lates Story</Link>
                 </Box>
                 <Icon
                   icon="material-symbols:arrow-right-alt"
