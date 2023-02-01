@@ -19,8 +19,9 @@ import {
 } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 import ControllerHome from "../../controller/home.controller";
+import PopupLogin from "../popupLogin";
 
-const Navbar = ({ props, isLogin, data }) => {
+const Navbar = ({ props, isLogin, data, handleLogin, handleSignUp }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const controller = ControllerHome();
@@ -84,8 +85,8 @@ const Navbar = ({ props, isLogin, data }) => {
         ) : (
           <>
             <Box justify={["flex-end"]} alignItems="end">
-              <MenuItem to="/signup" isLast>
-                <Link>Sign In</Link>
+              <MenuItem isLast>
+                <Link onClick={handleLogin}>Sign In</Link>
               </MenuItem>
             </Box>
             <Box>
@@ -95,6 +96,7 @@ const Navbar = ({ props, isLogin, data }) => {
                   rounded="md"
                   bg={["#F85964"]}
                   color={["#FFFF"]}
+                  onClick={handleSignUp}
                 >
                   Sign up
                 </Button>

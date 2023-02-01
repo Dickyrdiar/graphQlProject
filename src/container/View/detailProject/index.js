@@ -44,8 +44,12 @@ const DetailProject = () => {
             >
               Visit
             </Button>
-            <Button backgroundColor={"#f85964"} variant="ghost">
-              Vote
+            <Button
+              onClick={controller.handleClickVote}
+              backgroundColor={"#f85964"}
+              variant="ghost"
+            >
+              Vote {controller.vote}
             </Button>{" "}
           </Box>
         </Box>
