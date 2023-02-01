@@ -13,7 +13,7 @@ function ControllerHome() {
   const [openDetail, setOpenDetail] = useState(false);
   const [card, setCardIndex] = useState(null);
   const [valueSearch, setValueSearch] = useState("");
-  const [searchResult, setSearchResult] = useState(null);
+  const [searchResult, setSearchResult] = useState([]);
 
   const { loading, error, data } = useQuery(GET_PROJECT);
   const blog = useSelector((state) => state.blog);
