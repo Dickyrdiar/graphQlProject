@@ -9,20 +9,26 @@ import BlogPage from "./container/View/blog";
 import DetailProject from "./container/View/detailProject";
 import Authentication from "./auth/auth";
 import PopupLogin from "./components/popupLogin";
+// import PopupLogin from "./components/popupLogin";
 
 function App() {
   const controllerAuth = Authentication();
 
   console.log("cont", controllerAuth.isAuthenticated);
-  console.log("true false", controllerAuth.handleClickLogin);
+  console.log("true false", controllerAuth.showPopup);
 
   return (
     <>
       <Header
         handleLogin={controllerAuth.handleClickLogin}
+        handleSignUp={controllerAuth.handleClickLogin}
         isLogin={controllerAuth.isAuthenticated}
       />
-      <PopupLogin isOpen={controllerAuth.showPopup} />
+      <PopupLogin
+        isOpen={controllerAuth.showPopup}
+        onClose={controllerAuth.handleClickClose}
+        onClickLogin={controllerAuth.handleLogin}
+      />
       <Routes>
         <Route path="/" element={<HomeIndex />} />
         <Route path="/upload-project" element={<Multistep />} />
