@@ -19,12 +19,13 @@ import {
 } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
 import ControllerHome from "../../controller/home.controller";
-import PopupLogin from "../popupLogin";
 
 const Navbar = ({ props, isLogin, data, handleLogin, handleSignUp }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const controller = ControllerHome();
+
+  console.log("handle", handleLogin);
 
   return (
     <NavBarContainer {...props}>
@@ -36,7 +37,6 @@ const Navbar = ({ props, isLogin, data, handleLogin, handleSignUp }) => {
         onclick={controller.handleTohome}
       />
 
-      {/* <Box justify={['flex-end']} backgroundColor={'gray.600'}>Sign In</Box> */}
       <Box display={"flex"} justifyContent={"space-between"} width={"150px"}>
         {isLogin ? (
           <>
@@ -85,22 +85,27 @@ const Navbar = ({ props, isLogin, data, handleLogin, handleSignUp }) => {
         ) : (
           <>
             <Box justify={["flex-end"]} alignItems="end">
-              <MenuItem isLast>
-                <Link onClick={handleLogin}>Sign In</Link>
-              </MenuItem>
+              <Button
+                size="sm"
+                rounded="md"
+                bg={["#FFFF"]}
+                color={["#F85964"]}
+                onClick={handleLogin}
+              >
+                Sign In
+              </Button>
             </Box>
             <Box>
-              <MenuItem>
-                <Button
-                  size="sm"
-                  rounded="md"
-                  bg={["#F85964"]}
-                  color={["#FFFF"]}
-                  onClick={handleSignUp}
-                >
-                  Sign up
-                </Button>
-              </MenuItem>
+              <Button
+                size="sm"
+                rounded="md"
+                bg={["#F85964"]}
+                color={["#FFFF"]}
+                _hover={["#F85964"]}
+                onClick={handleSignUp}
+              >
+                Sign up
+              </Button>
             </Box>
           </>
         )}

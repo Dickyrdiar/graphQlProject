@@ -44,6 +44,8 @@ const Authentication = () => {
     });
   };
 
+  console.log("user", user);
+
   const handleLogout = () => {
     auth0client.logout({
       returnTo: window.location.origin,
@@ -54,6 +56,10 @@ const Authentication = () => {
     setShowPopup(true);
   };
 
+  const handleClickClose = () => {
+    setShowPopup(false);
+  };
+
   return {
     handleLogin,
     handleLogout,
@@ -62,6 +68,7 @@ const Authentication = () => {
     user,
     showPopup,
     handleClickLogin,
+    handleClickClose,
   };
 };
 

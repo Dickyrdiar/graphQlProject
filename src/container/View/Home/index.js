@@ -50,8 +50,8 @@ const HomeIndex = () => {
             // justifyContent={"space-around"}
           >
             <Box width={"60%"}>
-              {controller.searchResult &&
-                controller.searchResult.map((val) => {
+              {controller.responseDate?.Project &&
+                controller.responseDate?.Project?.map((val) => {
                   return (
                     <>
                       <Container maxW={"8xl"} as={Stack} spacing={12}>

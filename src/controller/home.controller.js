@@ -38,11 +38,7 @@ function ControllerHome() {
 
   const handleSearchValue = (e) => {
     setValueSearch(e.target.value);
-    setSearchResult(
-      responseDate?.Project?.filter((val) =>
-        val.name.toLowerCase().inclueds(valueSearch.toLowerCase())
-      )
-    );
+    setSearchResult(responseDate?.Project);
   };
 
   const hadleUploadButton = () => {
@@ -65,7 +61,7 @@ function ControllerHome() {
     useNavigate("/blog");
   };
 
-  console.log("resukt", searchResult);
+  console.log("result", searchResult);
 
   return {
     responseDate,
