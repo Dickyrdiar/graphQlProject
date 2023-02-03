@@ -20,12 +20,10 @@ import {
 import { Icon } from "@iconify/react";
 import ControllerHome from "../../controller/home.controller";
 
-const Navbar = ({ props, isLogin, data, handleLogin, handleSignUp }) => {
+const Navbar = ({ props, isLogin, handleLogin, handleSignUp }) => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
   const controller = ControllerHome();
-
-  console.log("handle", handleLogin);
 
   return (
     <NavBarContainer {...props}>
