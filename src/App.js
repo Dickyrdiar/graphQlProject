@@ -14,8 +14,7 @@ import PopupLogin from "./components/popupLogin";
 function App() {
   const controllerAuth = Authentication();
 
-  console.log("cont", controllerAuth.isAuthenticated);
-  console.log("true false", controllerAuth.showPopup);
+  console.log("handle login", controllerAuth.user);
 
   return (
     <>
@@ -27,7 +26,7 @@ function App() {
       <PopupLogin
         isOpen={controllerAuth.showPopup}
         onClose={controllerAuth.handleClickClose}
-        onClickLogin={controllerAuth.handleLogin}
+        onClickLogin={controllerAuth.handleLoginWithGmail}
       />
       <Routes>
         <Route path="/" element={<HomeIndex />} />

@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useQuery } from "@apollo/client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { GET_PROJECT } from "../models/gql/projectList";
@@ -36,9 +36,16 @@ function ControllerHome() {
     }
   }, []);
 
+  const filterData = useMemo(() => {
+    return responseDate?.Project?.filter((item) =>
+      item.name.toLowerCase().includes(valueSearch.toLowerCase())
+    );
+  }, [responseDate, valueSearch]);
+
+  console.log("filter", filterData);
+
   const handleSearchValue = (e) => {
     setValueSearch(e.target.value);
-    setSearchResult(responseDate?.Project);
   };
 
   const hadleUploadButton = () => {
@@ -61,10 +68,7 @@ function ControllerHome() {
     useNavigate("/blog");
   };
 
-  console.log("result", searchResult);
-
   return {
-    responseDate,
     errorData,
     loading,
     openDetail,
@@ -72,6 +76,7 @@ function ControllerHome() {
     handleChangetoblog,
     handleClick,
     valueSearch,
+    filterData,
     handleSearchValue,
     card,
     handleTohome,

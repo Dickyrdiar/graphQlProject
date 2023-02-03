@@ -38,7 +38,6 @@ const PopupLogin = ({ isOpen, onClose, onClickLogin }) => {
                 color="#f85964"
                 width={"90"}
                 height={"90"}
-                onClick={onclick}
               />
             </Stack>
 
@@ -58,9 +57,19 @@ const PopupLogin = ({ isOpen, onClose, onClickLogin }) => {
                 mr={4}
                 onClick={onClickLogin}
               >
-                Sign in
+                Sign in With GitHub
               </Button>
-              {/* <Button variant="ghost">Secondary Action</Button> */}
+
+              <Button
+                variant={"solid"}
+                color="#FFFF"
+                backgroundColor={"#f85964"}
+                size={"sm"}
+                mr={4}
+                onClick={onClickLogin}
+              >
+                Sign in With Gmail
+              </Button>
             </Stack>
           </ModalBody>
 

@@ -12,23 +12,18 @@ const Authentication = () => {
 
   useEffect(() => {
     const initAuth0 = async () => {
-      const auth0Client = await createAuth0Client({
+      const auth0 = await createAuth0Client({
         domain: AUTH_CONFIG.domain,
         clientId: AUTH_CONFIG.client_id,
       });
 
-      setAuth0client(auth0client);
+      setAuth0client(auth0);
 
-      if (window.location.search.includes("code=")) {
-        const { appStore } = await auth0Client.handleRedirectCallBack();
-        onRedirectCallback(appStore);
-      }
-
-      const isAuthenticated = await auth0Client.isAuthenticated();
+      const isAuthenticated = await auth0client.isAuthenticated();
       setIsAuthenticated(isAuthenticated);
 
       if (isAuthenticated) {
-        const user = await auth0Client.getUser();
+        const user = await auth0client.getUser();
         setUser(user);
       }
 
@@ -38,9 +33,17 @@ const Authentication = () => {
     initAuth0();
   }, []);
 
-  const handleLogin = async () => {
-    await auth0client.loginWithRedirect({
-      redirect_uri: window.location.origin,
+  const handleLoginWithGithub = async () => {
+    await auth0Client.loginWithPopup({
+      connection: "github",
+    });
+
+    console.log("click");
+  };
+
+  const handleLoginWithGmail = async () => {
+    await auth0client.loginWithPopup({
+      connection: "google-oauth2",
     });
   };
 
@@ -67,6 +70,8 @@ const Authentication = () => {
     isAuthenticated,
     user,
     showPopup,
+    handleLoginWithGithub,
+    handleLoginWithGmail,
     handleClickLogin,
     handleClickClose,
   };
