@@ -180,9 +180,6 @@ const MenuLinks = ({
         />
         <Stack>
           <InputGroup>
-            {/* <InputLeftElement pointerEvents={'none'}
-              children={<PhoneIcon color='gray.300' />}
-            /> */}
             <Input
               value={valueSeach}
               onChange={handleValueSearch}

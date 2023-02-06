@@ -26,7 +26,8 @@ function App() {
       <PopupLogin
         isOpen={controllerAuth.showPopup}
         onClose={controllerAuth.handleClickClose}
-        onClickLogin={controllerAuth.handleLoginWithGmail}
+        onClickLoginWithGithub={controllerAuth.handleLoginWithGithub}
+        onClickLoginWithGmail={controllerAuth.handleLoginWithGmail}
       />
       <Routes>
         <Route path="/" element={<HomeIndex />} />
