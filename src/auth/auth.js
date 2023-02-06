@@ -33,7 +33,8 @@ const Authentication = () => {
     initAuth0();
   }, []);
 
-  const handleLoginWithGithub = async () => {
+  const handleLoginWithGithub = async (event) => {
+    event.preventDefault();
     await auth0Client.loginWithPopup({
       connection: "github",
     });
@@ -41,13 +42,14 @@ const Authentication = () => {
     console.log("click");
   };
 
-  const handleLoginWithGmail = async () => {
+  const handleLoginWithGmail = async (event) => {
+    event.preventDefault();
     await auth0client.loginWithPopup({
       connection: "google-oauth2",
     });
-  };
 
-  console.log("user", user);
+    console.log("click");
+  };
 
   const handleLogout = () => {
     auth0client.logout({
@@ -64,7 +66,6 @@ const Authentication = () => {
   };
 
   return {
-    handleLogin,
     handleLogout,
     isLoading,
     isAuthenticated,

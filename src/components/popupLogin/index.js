@@ -12,9 +12,13 @@ import {
   Stack,
 } from "@chakra-ui/react";
 import { Icon } from "@iconify/react";
-import Authentication from "../../auth/auth";
 
-const PopupLogin = ({ isOpen, onClose, onClickLogin }) => {
+const PopupLogin = ({
+  isOpen,
+  onClose,
+  onClickLoginWithGithub,
+  onClickLoginWithGmail,
+}) => {
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -51,23 +55,25 @@ const PopupLogin = ({ isOpen, onClose, onClickLogin }) => {
             >
               <Button
                 variant={"solid"}
-                color="#FFFF"
-                backgroundColor={"#f85964"}
+                color="#F85964"
+                backgroundColor={"#FFFF"}
                 size={"sm"}
                 mr={4}
-                onClick={onClickLogin}
+                onClick={onClickLoginWithGithub}
               >
-                Sign in With GitHub
+                <Icon icon="mdi:github" width={"40"} height={"40"} /> Sign in
+                With GitHub
               </Button>
 
               <Button
                 variant={"solid"}
-                color="#FFFF"
-                backgroundColor={"#f85964"}
+                color="#F85964"
+                backgroundColor={"#FFFF"}
                 size={"sm"}
                 mr={4}
-                onClick={onClickLogin}
+                onClick={onClickLoginWithGmail}
               >
+                <Icon icon="logos:google-gmail" width={"30"} height={"30"} />
                 Sign in With Gmail
               </Button>
             </Stack>
