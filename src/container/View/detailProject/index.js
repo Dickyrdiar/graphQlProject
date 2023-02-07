@@ -5,8 +5,6 @@ import DetailController from "../../../controller/detail.controller";
 const DetailProject = () => {
   const controller = DetailController();
 
-  console.log("data", controller.data);
-
   return (
     <Box>
       <Container maxWidth={"80em"}>
