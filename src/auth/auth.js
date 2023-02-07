@@ -38,8 +38,6 @@ const Authentication = () => {
     await auth0Client.loginWithPopup({
       connection: "github",
     });
-
-    console.log("click");
   };
 
   const handleLoginWithGmail = async (event) => {
@@ -47,8 +45,6 @@ const Authentication = () => {
     await auth0client.loginWithPopup({
       connection: "google-oauth2",
     });
-
-    console.log("click");
   };
 
   const handleLogout = () => {

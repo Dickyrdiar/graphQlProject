@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { GET_PROJECT } from "../models/gql/projectList";
 import { getDataApi } from "../redux/api";
+import DetailController from "./detail.controller";
 // import DetailController from "./detail.comtroller";
 
 function ControllerHome() {
@@ -42,8 +43,6 @@ function ControllerHome() {
     );
   }, [responseDate, valueSearch]);
 
-  console.log("filter", filterData);
-
   const handleSearchValue = (e) => {
     setValueSearch(e.target.value);
   };
@@ -56,8 +55,11 @@ function ControllerHome() {
     history("/");
   };
 
-  const handleClick = (index) => {
-    setCardIndex(index.responseDate);
+  const handleClick = () => {
+    const result = filterData.find((val) => val.di_project);
+    localStorage.setItem("response", JSON.stringify(result));
+    DetailController(result.di_project);
+    console.log("hasil", result);
   };
 
   const handleOnClose = () => {
