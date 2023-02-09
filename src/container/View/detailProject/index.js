@@ -5,6 +5,8 @@ import DetailController from "../../../controller/detail.controller";
 const DetailProject = () => {
   const controller = DetailController();
 
+  console.log("p", controller?.parseResponse?.name);
+
   return (
     <Box>
       <Container maxWidth={"80em"}>
@@ -29,7 +31,7 @@ const DetailProject = () => {
             marginTop: "-3em",
           }}
         >
-          <Box>nama project</Box>
+          <Box>{controller?.parseResponse?.name}</Box>
           <Box>
             {" "}
             <Button
@@ -52,12 +54,7 @@ const DetailProject = () => {
           </Box>
         </Box>
 
-        <Box padding={"3%"}>
-          Its important to note that the dynamic routing url should be defined
-          before any route that has a more general path, otherwise the general
-          one will match first. You can also use query parameters to pass extra
-          data to a route and access it in the component via useLocation hook.
-        </Box>
+        <Box padding={"3%"}>{controller?.parseResponse?.desc}</Box>
       </Container>
     </Box>
   );

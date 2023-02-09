@@ -56,9 +56,8 @@ function ControllerHome() {
   };
 
   const handleClick = () => {
-    const result = filterData.find((val) => val.di_project);
+    const result = filterData.find((val) => val?.di_project);
     localStorage.setItem("response", JSON.stringify(result));
-    DetailController(result.di_project);
     console.log("hasil", result);
   };
 
