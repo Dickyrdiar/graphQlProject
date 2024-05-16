@@ -16,7 +16,7 @@ const Multistep = () => {
 
   return (
     <>
-      <Container maxW={"80%"}>
+      <Container maxW={"70%"}>
         <Box p={6} m="10px auto" padding={"40px"}>
           Post A new Project
         </Box>
@@ -39,7 +39,7 @@ const Multistep = () => {
           ></Progress>
           <FormControl>
             {controller.step === 1 ? (
-              <Box maxW={"60%"}>
+              <Box maxW={"60%"} margin="5%">
                 <FormController
                   label={"Name Project"}
                   type="text"
@@ -51,14 +51,16 @@ const Multistep = () => {
                 />
               </Box>
             ) : controller.step === 2 ? (
-              <EditorDesc
-                label={"Description"}
-                value={controller.desc}
-                onChange={controller.handleChangeInputDesc}
-                placeholder={"max 60 word"}
-              />
+              <Box maxW={"60%"} margin={"5%"}>
+                <EditorDesc
+                  label={"Description"}
+                  value={controller.desc}
+                  onChange={controller.handleChangeInputDesc}
+                  placeholder={"max 60 word"}
+                />
+              </Box>
             ) : controller.step === 3 ? (
-              <Box maxW={"60%"}>
+              <Box maxW={"60%"} margin="5%">
                 <FormController
                   label={"Link Project"}
                   type="text"
@@ -70,7 +72,7 @@ const Multistep = () => {
                 />
               </Box>
             ) : controller.step === 4 ? (
-              <Box maxW={"60%"}>
+              <Box maxW={"60%"} margin="5%">
                 <FormController
                   label={"Image Project"}
                   type={"file"}
@@ -90,7 +92,7 @@ const Multistep = () => {
                 ))}
               </Box>
             ) : (
-              <Box maxW={"60%"}>
+              <Box maxW={"60%"} margin={"5%"}>
                 <FormController
                   label={"Image Project"}
                   type={"file"}
